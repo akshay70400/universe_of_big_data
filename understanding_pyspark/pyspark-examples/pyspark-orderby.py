@@ -1,15 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Jun 20 07:45:04 2020
-
-@author: NNK
-"""
-
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, asc,desc
 
-spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
+spark = SparkSession.builder..master('local').appName('my_app').getOrCreate()
 
 simpleData = [("James","Sales","NY",90000,34,10000), \
     ("Michael","Sales","NY",86000,56,20000), \
@@ -47,6 +40,3 @@ df.createOrReplaceTempView("EMP")
 df.select("employee_name",asc("department"),desc("state"),"salary","age","bonus").show(truncate=False)
 
 spark.sql("select employee_name,department,state,salary,age,bonus from EMP ORDER BY department asc").show(truncate=False)
-
-
-

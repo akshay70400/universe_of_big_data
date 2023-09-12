@@ -28,7 +28,6 @@ simpleData = [("James", "Sales", 3000),
   ]
 schema = ["employee_name", "department", "salary"]
   
-  
 df = spark.createDataFrame(data=simpleData, schema = schema)
 df.printSchema()
 df.show(truncate=False)
